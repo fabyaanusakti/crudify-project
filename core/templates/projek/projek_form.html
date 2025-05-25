@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4 rounded-2 shadow-sm border-2" style="width: 750px;" id="projekTableContainer">
+    <h2 class="text-center fw-bold mb-3 fs-4">Tambah Projek</h2>
+    <h2>{% if form.instance.pk %}Update Projek{% else %}Create New Projek{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'projek_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+{% endblock %}

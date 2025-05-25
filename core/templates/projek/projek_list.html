@@ -1,0 +1,44 @@
+<!-- templates/projek/projek_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4 rounded-2 shadow-sm border-2" style="width: 850px;" id="projekTableContainer">
+    <h2 class="text-center fw-bold mb-3 fs-4">Daftar Projek</h2>
+    <a href="{% url 'projek_create' %}" class="btn btn-success mb-3">Tambah Projek Baru</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nama Projek</th>
+                <th>Lokasi</th>
+                <th>Tanggal Mulai</th>
+                <th>Tanggal Selesai</th>
+                <th>Supervisor</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for projek in projeks %}
+            <tr>
+                <td>{{ projek.nama_projek }}</td>
+                <td>{{ projek.lokasi }}</td>
+                <td>{{ projek.tanggal_mulai }}</td>
+                <td>{{ projek.tanggal_selesai }}</td>
+                <td>{{ projek.supervisor }}</td>
+                <td>{{ projek.get_status_projek_display }}</td>
+                <td>
+                    <a href="{% url 'projek_update' projek.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'projek_delete' projek.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{% url 'projek_send' projek.pk %}" class="btn btn-sm btn-info">Send</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">Tidak ada projek tersedia.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -9,10 +9,9 @@ class ProjekModels(models.Model):
         ('gagal', 'Gagal'),
     ]
 
-    id_projek = models.IntegerField(unique=True)
     nama_projek = models.CharField(max_length=255)
-    deskripsi = models.TextField()
-    lokasi = models.CharField(max_length=255)
+    deskripsi = models.TextField(blank=True)
+    lokasi = models.CharField(max_length=255, blank=True)
     tanggal_mulai = models.DateField()
     tanggal_selesai = models.DateField()
     supervisor = models.CharField(max_length=255)
@@ -22,6 +21,3 @@ class ProjekModels(models.Model):
         default='berlangsung',
         verbose_name='Status Projek'
     )
-
-
-    id_projek = models.IntegerField(unique=True)

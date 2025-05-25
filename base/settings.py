@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=9&a2%4&g&vu$c+&w3@u+xnct51ax^@p7w3j31edc_q1gz_is)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['faizbyaan.pythonanywhere.com']
+ALLOWED_HOSTS = [] #'faizbyaan.pythonanywhere.com'
 
 
 # Application definition
@@ -52,6 +52,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'base.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
 TEMPLATES = [
     {
